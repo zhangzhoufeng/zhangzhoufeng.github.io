@@ -3,30 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用markdown语法编写博客 | 论程序员的自我修养</title>
+  <title>UIWebView加载本地HTML文件 | 论程序员的自我修养</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本符号
-
-*,-,+ 3个符号效果都一样，这3个符号被称为 Markdown符号
-空白行表示另起一个段落
-`是表示inline代码，tab是用来标记 代码段，分别对应html的code，pre标签">
+  <meta name="description" content="有时候需求需要将本地的html文件加载到webView上面,不废话,直接贴代码:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用markdown语法编写博客">
-<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/07/08/markdown/index.html">
+<meta property="og:title" content="UIWebView加载本地HTML文件">
+<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/07/29/webViewLocalFile/index.html">
 <meta property="og:site_name" content="论程序员的自我修养">
-<meta property="og:description" content="基本符号
-
-*,-,+ 3个符号效果都一样，这3个符号被称为 Markdown符号
-空白行表示另起一个段落
-`是表示inline代码，tab是用来标记 代码段，分别对应html的code，pre标签">
-<meta property="og:updated_time" content="2016-07-21T07:35:23.000Z">
+<meta property="og:description" content="有时候需求需要将本地的html文件加载到webView上面,不废话,直接贴代码:">
+<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webViewLocalFile-img/webViewInit.png">
+<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webViewLocalFile-img/htmlFile.jpeg">
+<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webViewLocalFile-img/group.jpeg">
+<meta property="og:updated_time" content="2016-07-29T10:36:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用markdown语法编写博客">
-<meta name="twitter:description" content="基本符号
-
-*,-,+ 3个符号效果都一样，这3个符号被称为 Markdown符号
-空白行表示另起一个段落
-`是表示inline代码，tab是用来标记 代码段，分别对应html的code，pre标签">
+<meta name="twitter:title" content="UIWebView加载本地HTML文件">
+<meta name="twitter:description" content="有时候需求需要将本地的html文件加载到webView上面,不废话,直接贴代码:">
+<meta name="twitter:image" content="https://zhangzhoufeng.github.io/img/webViewLocalFile-img/webViewInit.png">
   
     <link rel="alternative" href="/atom.xml" title="论程序员的自我修养" type="application/atom+xml">
   
@@ -219,11 +211,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-markdown" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-webViewLocalFile" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/08/markdown/" class="article-date">
-      <time datetime="2016-07-08T11:07:16.000Z" itemprop="datePublished">2016-07-08</time>
+      <a href="/2016/07/29/webViewLocalFile/" class="article-date">
+      <time datetime="2016-07-29T10:21:18.000Z" itemprop="datePublished">2016-07-29</time>
 </a>
     </div>
   
@@ -236,7 +228,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用markdown语法编写博客
+      UIWebView加载本地HTML文件
     </h1>
   
 
@@ -247,7 +239,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown语法说明-编写博文/">markdown语法说明,编写博文</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UIWebView/">UIWebView</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -257,45 +249,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="基本符号"><a href="#基本符号" class="headerlink" title="基本符号"></a>基本符号</h3><blockquote>
-<ol>
-<li>*,-,+ 3个符号效果都一样，这3个符号被称为 Markdown符号</li>
-<li>空白行表示另起一个段落</li>
-<li>`是表示inline代码，tab是用来标记 代码段，分别对应html的code，pre标签 </li>
-</ol>
-</blockquote>
-<a id="more"></a>
-<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><blockquote>
-<ol>
-<li>单一段落(&lt; p &gt;) 用一个空白行</li>
-<li>连续两个空格 会变成一个 &lt; br &gt;</li>
-<li>连续3个符号，然后是空行，表示 hr横线</li>
-</ol>
-</blockquote>
-<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><blockquote>
-<ol>
-<li>生成h1–h6,在文字前面加上 1–6个# 来实现</li>
-<li>文字加粗是通过 文字左右各两个符号</li>
-</ol>
-</blockquote>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote>
-<p>在第一行加上 “&gt;”和一个空格，表示代码引用，还可以嵌套</p>
-</blockquote>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><blockquote>
-<p>这个是markdown文件的主要表示方式，<br>使用*,+,-加上一个空格来表示<br>可以支持嵌套<br>有序列表用 数字+英文点+空格来表示<br>列表内容很长，不需要手工输入换行符，css控制段落的宽度，会自动的缩放的</p>
-</blockquote>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><blockquote>
-<p>直接写 [锚文本](url “可选的title”)<br>引用 先定义 [ref_name]:url,然后在需要写入url的地方,这样使用[锚文本][ref_name]，通常的ref_name一般用数字表示，这样显得专业<br>简写url：用尖括号包裹url<br>这样生成的url锚文本就是url本身</p>
-</blockquote>
-<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><blockquote>
-<p>一行表示: ![alt_text](url “可选的title”)<br>引用表示法: ![alt_text][id],预先定义 [id]:url “可选title”<br>直接使用&lt; img &gt;标签，这样可以指定图片的大小尺寸</p>
-</blockquote>
-<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><blockquote>
-<p>用\来转义，表示文本中的markdown符号<br>可以在文本种直接使用html标签，但是要注意在使用的时候，前后加上空行<br>文本前后各加一个符号，表示斜体</p>
-</blockquote>
-<h3 id="如果不想博文在首页全部显示-并出现-lt-阅读全文-gt-按钮-在显示按钮的地方添加"><a href="#如果不想博文在首页全部显示-并出现-lt-阅读全文-gt-按钮-在显示按钮的地方添加" class="headerlink" title="如果不想博文在首页全部显示,并出现&lt;阅读全文&gt;按钮,在显示按钮的地方添加"></a>如果不想博文在首页全部显示,并出现&lt;阅读全文&gt;按钮,在显示按钮的地方添加</h3><blockquote>
-<p>&lt;!--more--&gt;</p>
-</blockquote>
+        <h3 id="有时候需求需要将本地的html文件加载到webView上面-不废话-直接贴代码"><a href="#有时候需求需要将本地的html文件加载到webView上面-不废话-直接贴代码" class="headerlink" title="有时候需求需要将本地的html文件加载到webView上面,不废话,直接贴代码:"></a>有时候需求需要将本地的html文件加载到webView上面,不废话,直接贴代码:</h3><a id="more"></a>
+<p><img src="/img/webViewLocalFile-img/webViewInit.png" alt="关键代码:加载文件"></p>
+<h3 id="HTML文件路径"><a href="#HTML文件路径" class="headerlink" title="HTML文件路径"></a>HTML文件路径</h3><p><img src="/img/webViewLocalFile-img/htmlFile.jpeg" alt="HTML文件路径"></p>
+<h3 id="引入HTML文件夹时-不可选择平常引入文件使用的Create-Groups"><a href="#引入HTML文件夹时-不可选择平常引入文件使用的Create-Groups" class="headerlink" title="引入HTML文件夹时,不可选择平常引入文件使用的Create Groups:"></a>引入HTML文件夹时,不可选择平常引入文件使用的Create Groups:</h3><p><img src="/img/webViewLocalFile-img/group.jpeg" alt="不可用Create Groups"></p>
 
       
     </div>
@@ -304,13 +261,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/08/markdown/">使用markdown语法编写博客</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/29/webViewLocalFile/">UIWebView加载本地HTML文件</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
-        <p><span>发布时间:</span>2016年07月08日 - 19时07分</p>
-        <p><span>最后更新:</span>2016年07月21日 - 15时35分</p>
+        <p><span>发布时间:</span>2016年07月29日 - 18时21分</p>
+        <p><span>最后更新:</span>2016年07月29日 - 18时36分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/08/markdown/" title="使用markdown语法编写博客">https://zhangzhoufeng.github.io/2016/07/08/markdown/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/07/08/markdown/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/29/webViewLocalFile/" title="UIWebView加载本地HTML文件">https://zhangzhoufeng.github.io/2016/07/29/webViewLocalFile/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/07/29/webViewLocalFile/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -323,18 +280,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/07/11/swift-conclusion/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          个人对swift基本语法做的一些总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/07/08/hexo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo3.0 + github个人博客安装步骤,各种坑总结.</div>
+    <a href="/2016/07/29/webView-adaptation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">UIWebView 自适应宽度,内容高度获取</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -345,7 +293,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本符号"><span class="toc-number">1.</span> <span class="toc-text">基本符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#换行"><span class="toc-number">2.</span> <span class="toc-text">换行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标题"><span class="toc-number">3.</span> <span class="toc-text">标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用"><span class="toc-number">4.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表"><span class="toc-number">5.</span> <span class="toc-text">列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接"><span class="toc-number">6.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入图片"><span class="toc-number">7.</span> <span class="toc-text">插入图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊符号"><span class="toc-number">8.</span> <span class="toc-text">特殊符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果不想博文在首页全部显示-并出现-lt-阅读全文-gt-按钮-在显示按钮的地方添加"><span class="toc-number">9.</span> <span class="toc-text">如果不想博文在首页全部显示,并出现<阅读全文>按钮,在显示按钮的地方添加</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#有时候需求需要将本地的html文件加载到webView上面-不废话-直接贴代码"><span class="toc-number">1.</span> <span class="toc-text">有时候需求需要将本地的html文件加载到webView上面,不废话,直接贴代码:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML文件路径"><span class="toc-number">2.</span> <span class="toc-text">HTML文件路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引入HTML文件夹时-不可选择平常引入文件使用的Create-Groups"><span class="toc-number">3.</span> <span class="toc-text">引入HTML文件夹时,不可选择平常引入文件使用的Create Groups:</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -407,7 +355,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/08/markdown/" data-title="使用markdown语法编写博客" data-url="https://zhangzhoufeng.github.io/2016/07/08/markdown/"></div>
+    <div class="ds-thread" data-thread-key="2016/07/29/webViewLocalFile/" data-title="UIWebView加载本地HTML文件" data-url="https://zhangzhoufeng.github.io/2016/07/29/webViewLocalFile/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -430,13 +378,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/11/swift-conclusion/" title="上一篇: 个人对swift基本语法做的一些总结">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/07/08/hexo/" title="下一篇: hexo3.0 + github个人博客安装步骤,各种坑总结.">
+            <a href="/2016/07/29/webView-adaptation/" title="下一篇: UIWebView 自适应宽度,内容高度获取">
                 <i class="fa fa-angle-right"></i>
             </a>
         
