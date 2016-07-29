@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>UIWebView 自适应宽度 | 论程序员的自我修养</title>
+  <title>UIWebView 自适应宽度,内容高度获取 | 论程序员的自我修养</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UIWebView 自适应宽度">
+<meta property="og:title" content="UIWebView 自适应宽度,内容高度获取">
 <meta property="og:url" content="https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/index.html">
 <meta property="og:site_name" content="论程序员的自我修养">
 <meta property="og:description" content="做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图">
@@ -19,9 +19,9 @@
 <meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/pageHeight.png">
 <meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/last.jpeg">
 <meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/lastHeight.jpeg">
-<meta property="og:updated_time" content="2016-07-29T09:58:24.000Z">
+<meta property="og:updated_time" content="2016-07-29T10:10:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UIWebView 自适应宽度">
+<meta name="twitter:title" content="UIWebView 自适应宽度,内容高度获取">
 <meta name="twitter:description" content="做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图">
 <meta name="twitter:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/normal.jpg">
   
@@ -233,7 +233,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      UIWebView 自适应宽度
+      UIWebView 自适应宽度,内容高度获取
     </h1>
   
 
@@ -261,7 +261,7 @@
 </blockquote>
 <h3 id="开始代码编写-第一次先加载一次HTML代码-用来获取webView的宽度-第一次先隐藏webView"><a href="#开始代码编写-第一次先加载一次HTML代码-用来获取webView的宽度-第一次先隐藏webView" class="headerlink" title="开始代码编写,第一次先加载一次HTML代码,用来获取webView的宽度,第一次先隐藏webView"></a>开始代码编写,第一次先加载一次HTML代码,用来获取webView的宽度,第一次先隐藏webView</h3><p><img src="/img/webView-adaptation-img/webViewEdit.png" alt="初始化webView"> </p>
 <h3 id="第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在里加上我们需要的，然后再将新的html重新加载，加载完成后再显示"><a href="#第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在里加上我们需要的，然后再将新的html重新加载，加载完成后再显示" class="headerlink" title="第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在里加上我们需要的，然后再将新的html重新加载，加载完成后再显示:"></a>第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在<head>里加上我们需要的<meta>，然后再将新的html重新加载，加载完成后再显示:</head></h3><p><img src="/img/webView-adaptation-img/webViewDelegate.png" alt="webView代理"><br><img src="/img/webView-adaptation-img/pageWidth.png" alt="根据比例设置宽度"> </p>
-<h3 id="根据个人需求-获取webView内容的高度-并赋值给webView"><a href="#根据个人需求-获取webView内容的高度-并赋值给webView" class="headerlink" title="根据个人需求,获取webView内容的高度,并赋值给webView:"></a>根据个人需求,获取webView内容的高度,并赋值给webView:</h3><p><img src="/img/webView-adaptation-img/pageHeight.png" alt="未设置scalesPageToFit=YES前"> </p>
+<h3 id="根据个人需求-获取webView内容的高度-并赋值给webView"><a href="#根据个人需求-获取webView内容的高度-并赋值给webView" class="headerlink" title="根据个人需求,获取webView内容的高度,并赋值给webView:"></a>根据个人需求,获取webView内容的高度,并赋值给webView:</h3><p><img src="/img/webView-adaptation-img/pageHeight.png" alt="webView内容高度获取"> </p>
 <h4 id="方便复制那段长长的代码"><a href="#方便复制那段长长的代码" class="headerlink" title="方便复制那段长长的代码"></a>方便复制那段长长的代码</h4><blockquote>
 <p>//获取内容实际高度（像素）<br>    NSString * height_str= [webView stringByEvaluatingJavaScriptFromString: @”document.getElementById(‘webview_content_wrapper’).offsetHeight + parseInt(window.getComputedStyle(document.getElementsByTagName(‘body’)[0]).getPropertyValue(‘margin-top’))  + parseInt(window.getComputedStyle(document.getElementsByTagName(‘body’)[0]).getPropertyValue(‘margin-bottom’))”];</p>
 </blockquote>
@@ -275,12 +275,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度,内容高度获取</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
         <p><span>发布时间:</span>2016年07月29日 - 10时27分</p>
-        <p><span>最后更新:</span>2016年07月29日 - 17时58分</p>
+        <p><span>最后更新:</span>2016年07月29日 - 18时10分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/29/webView-adaptation/" title="UIWebView 自适应宽度">https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/29/webView-adaptation/" title="UIWebView 自适应宽度,内容高度获取">https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/</a>
             <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -369,7 +369,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/29/webView-adaptation/" data-title="UIWebView 自适应宽度" data-url="https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/"></div>
+    <div class="ds-thread" data-thread-key="2016/07/29/webView-adaptation/" data-title="UIWebView 自适应宽度,内容高度获取" data-url="https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -401,7 +401,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/QRCodeCreat/">iOS原生二维码的生成(OC版 + swift版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-conclusion/">个人对swift基本语法做的一些总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/markdown/">使用markdown语法编写博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度,内容高度获取</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/QRCodeCreat/">iOS原生二维码的生成(OC版 + swift版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-conclusion/">个人对swift基本语法做的一些总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/markdown/">使用markdown语法编写博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
