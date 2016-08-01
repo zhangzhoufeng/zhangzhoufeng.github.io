@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://zhangzhoufeng.github.io/img/webViewLocalFile-img/webViewInit.png">
 <meta property="og:image" content="https://zhangzhoufeng.github.io/img/webViewLocalFile-img/htmlFile.jpeg">
 <meta property="og:image" content="https://zhangzhoufeng.github.io/img/webViewLocalFile-img/group.jpeg">
-<meta property="og:updated_time" content="2016-07-29T10:36:41.000Z">
+<meta property="og:updated_time" content="2016-07-29T10:53:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIWebView加载本地HTML文件">
 <meta name="twitter:description" content="有时候需求需要将本地的html文件加载到webView上面,不废话,直接贴代码:">
@@ -253,6 +253,19 @@
 <p><img src="/img/webViewLocalFile-img/webViewInit.png" alt="关键代码:加载文件"></p>
 <h3 id="HTML文件路径"><a href="#HTML文件路径" class="headerlink" title="HTML文件路径"></a>HTML文件路径</h3><p><img src="/img/webViewLocalFile-img/htmlFile.jpeg" alt="HTML文件路径"></p>
 <h3 id="引入HTML文件夹时-不可选择平常引入文件使用的Create-Groups"><a href="#引入HTML文件夹时-不可选择平常引入文件使用的Create-Groups" class="headerlink" title="引入HTML文件夹时,不可选择平常引入文件使用的Create Groups:"></a>引入HTML文件夹时,不可选择平常引入文件使用的Create Groups:</h3><p><img src="/img/webViewLocalFile-img/group.jpeg" alt="不可用Create Groups"></p>
+<pre name="code" class="java">
+    //js获取body宽度
+    NSString *bodyWidth= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollWidth "];
+    float widthOfBody = [bodyWidth floatValue];
+    //获取实际要显示的html
+    NSString *html = [self htmlAdjustWithPageWidth:widthOfBody html:_htmlStr webView:webView];
+    //设置为已经加载完成
+    _isLoadingFinished = YES;
+    [webView sizeToFit];
+    //加载实际要现实的html
+    NSString * htmlcontent = [NSString stringWithFormat:@"<div id="\"webview_content_wrapper\"">%@</div>", html];
+    [webView loadHTMLString:htmlcontent baseURL:nil];
+</pre>
 
       
     </div>
@@ -264,7 +277,7 @@
         <p><span>本文标题:</span><a href="/2016/07/29/webViewLocalFile/">UIWebView加载本地HTML文件</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
         <p><span>发布时间:</span>2016年07月29日 - 18时21分</p>
-        <p><span>最后更新:</span>2016年07月29日 - 18时36分</p>
+        <p><span>最后更新:</span>2016年07月29日 - 18时53分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/29/webViewLocalFile/" title="UIWebView加载本地HTML文件">https://zhangzhoufeng.github.io/2016/07/29/webViewLocalFile/</a>
             <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/07/29/webViewLocalFile/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
