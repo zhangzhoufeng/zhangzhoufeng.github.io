@@ -3,27 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo3.0 + github个人博客安装步骤,各种坑总结. | 论程序员的自我修养</title>
+  <title>二维码扫描 | 论程序员的自我修养</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
+  <meta name="description" content="需要导入的库库
+AVFoundation/AVFoundation.h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo3.0 + github个人博客安装步骤,各种坑总结.">
-<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/07/08/hexo/index.html">
+<meta property="og:title" content="二维码扫描">
+<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/08/27/scanQRCode/index.html">
 <meta property="og:site_name" content="论程序员的自我修养">
-<meta property="og:description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
-<meta property="og:updated_time" content="2016-07-21T07:33:55.000Z">
+<meta property="og:description" content="需要导入的库库
+AVFoundation/AVFoundation.h">
+<meta property="og:updated_time" content="2017-08-01T08:40:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo3.0 + github个人博客安装步骤,各种坑总结.">
-<meta name="twitter:description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
+<meta name="twitter:title" content="二维码扫描">
+<meta name="twitter:description" content="需要导入的库库
+AVFoundation/AVFoundation.h">
   
     <link rel="alternative" href="/atom.xml" title="论程序员的自我修养" type="application/atom+xml">
   
@@ -216,11 +210,11 @@ sudo npm install -g hexo">
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-scanQRCode" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/08/hexo/" class="article-date">
-      <time datetime="2016-07-08T07:16:29.000Z" itemprop="datePublished">2016-07-08</time>
+      <a href="/2016/08/27/scanQRCode/" class="article-date">
+      <time datetime="2016-08-27T02:53:07.000Z" itemprop="datePublished">2016-08-27</time>
 </a>
     </div>
   
@@ -233,7 +227,7 @@ sudo npm install -g hexo">
         
   
     <h1 class="article-title" itemprop="name">
-      hexo3.0 + github个人博客安装步骤,各种坑总结.
+      二维码扫描
     </h1>
   
 
@@ -244,7 +238,7 @@ sudo npm install -g hexo">
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo安装/">hexo安装</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UIwebView/">UIwebView</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -254,55 +248,39 @@ sudo npm install -g hexo">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="基本安装流程"><a href="#基本安装流程" class="headerlink" title="基本安装流程"></a><strong>基本安装流程</strong></h3><ol>
-<li>安装<a href="https://nodejs.org/en/&quot;&quot;" target="_blank" rel="external">note.js</a></li>
-<li>安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装<blockquote>
-<p>sudo npm install -g hexo</p>
-<a id="more"></a></blockquote>
-</li>
-<li>初始化hexo<blockquote>
-<p>sudo hexo init</p>
+        <h3 id="需要导入的库库"><a href="#需要导入的库库" class="headerlink" title="需要导入的库库"></a>需要导入的库库</h3><blockquote>
+<p>AVFoundation/AVFoundation.h<br><a id="more"></a></p>
+</blockquote>
+<h3 id="开始创建代码"><a href="#开始创建代码" class="headerlink" title="开始创建代码"></a>开始创建代码</h3><ol>
+<li>全局变量设置<blockquote>
+<p>@property (strong,nonatomic)AVCaptureDevice *device;//摄像头<br>@property (strong,nonatomic)AVCaptureDeviceInput *input;//输入对象<br>@property (strong,nonatomic)AVCaptureMetadataOutput *output;//输入对象<br>@property (strong,nonatomic)AVCaptureSession *session;//会话器<br>@property (strong,nonatomic)AVCaptureVideoPreviewLayer *preview;//layer层承载控件</p>
 </blockquote>
 </li>
-<li>安装依赖包<blockquote>
-<p>sudo npm install</p>
+<li>需要遵守的代理<blockquote>
+<p>AVCaptureMetadataOutputObjectsDelegate</p>
 </blockquote>
 </li>
-<li>生成静态网页<blockquote>
-<p>sudo hexo generate</p>
+<li>初始化扫描器与开启扫描<blockquote>
+<p> // Device<br> _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];<br> // Input<br> _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:nil];<br> // Output<br> _output = [[AVCaptureMetadataOutput alloc]init];<br> [_output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];</p><p><br> // Session<br> _session = [[AVCaptureSession alloc]init];<br> [_session setSessionPreset:AVCaptureSessionPresetHigh];<br>  [_session addInput:self.input];<br> [_session addOutput:self.output];</p><p><br> // 条码类型 AVMetadataObjectTypeQRCode<br> _output.metadataObjectTypes =@[AVMetadataObjectTypeQRCode];</p><p><br> // Preview<br> _preview =[AVCaptureVideoPreviewLayer layerWithSession:self.session];<br> _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;<br> _preview.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64);<br> [self.view.layer insertSublayer:self.preview atIndex:0];<br> // 开启扫描<br> [_session startRunning];</p>
 </blockquote>
 </li>
-<li>运行本地服务器,浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>如果可以访问,代表hexo已经配置成功。<blockquote>
-<p>sudo hexo server</p>
-</blockquote>
-</li>
-<li>创建博文<blockquote>
-<p>sudo hexo new “postName”</p>
-</blockquote>
-</li>
-<li>在根目录下_config.yml文件中部署github地址,在文件最底部添加,仓库名格式必须是[<em>username_github.io]</em><blockquote>
-<p>deploy:<br>type: git<br>repository: <a href="https://github.com/xzhangzhoufeng/zhangzhoufeng.github.io.git" target="_blank" rel="external">https://github.com/xzhangzhoufeng/zhangzhoufeng.github.io.git</a><br>branch: master   </p>
-</blockquote>
-</li>
-<li>Hexo 3.0后，需要把deployer的类型从github改成git，另外需要加入相应的包<blockquote>
-<p>sudo npm install hexo-deployer-git --save</p>
-</blockquote>
-</li>
-<li>执行命令上传到github(如果顺利,第一次添加需要输入github的username和密码)<blockquote>
-<p> sudo hexo deploy</p>
-</blockquote>
-</li>
-<li><strong>ps</strong>:网上很多教程命令中最前面都没有sudo,这个与操作权限有关,为了避免因权限问题出现安装不成功的情况,建议每条命令都加上  </li>
 </ol>
-<h3 id="遇到的坑总结"><a href="#遇到的坑总结" class="headerlink" title="遇到的坑总结"></a><strong>遇到的坑总结</strong></h3><h4 id="权限问题-如果在开始安装hexo的时候就遇到error"><a href="#权限问题-如果在开始安装hexo的时候就遇到error" class="headerlink" title="权限问题,如果在开始安装hexo的时候就遇到error"></a>权限问题,如果在开始安装hexo的时候就遇到error</h4><p>可能就是权限的问题,在每条命令上都添加sudo.</p>
-<h4 id="执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误"><a href="#执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误" class="headerlink" title="执行 hexo deploy 命令,出现error deployer not found:github 的错误"></a>执行 hexo deploy 命令,出现error deployer not found:github 的错误</h4><p>github配置的问题,执行[sudo npm install hexo-deployer-git --save],再配置</p>
-<h4 id="Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt"><a href="#Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt" class="headerlink" title="{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    &gt;"></a>{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    &gt;</h4><p> 网上最靠谱的解决办法</p>
-<blockquote>
-<p>sudo npm install hexo –no-optional   </p>
-<pre><code>##### 如果不成功,可以执行下面这种方法
-$ npm uninstall hexo-cli -g
-$ npm install hexo-cli -g
-</code></pre></blockquote>
+<h3 id="扫描结果的代理方法"><a href="#扫描结果的代理方法" class="headerlink" title="扫描结果的代理方法"></a>扫描结果的代理方法</h3><pre name="code" class="java">
+  #pragma mark AVCaptureMetadataOutputObjectsDelegate
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
+{
+
+    NSString *stringValue;
+
+    if ([metadataObjects count] >0)
+    {
+        AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
+        stringValue = metadataObject.stringValue;
+    }
+
+    [_session stopRunning];
+}
+ </pre>
 
       
     </div>
@@ -311,13 +289,13 @@ $ npm install hexo-cli -g
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></p>
+        <p><span>本文标题:</span><a href="/2016/08/27/scanQRCode/">二维码扫描</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
-        <p><span>发布时间:</span>2016年07月08日 - 15时16分</p>
-        <p><span>最后更新:</span>2016年07月21日 - 15时33分</p>
+        <p><span>发布时间:</span>2016年08月27日 - 10时53分</p>
+        <p><span>最后更新:</span>2017年08月01日 - 16时40分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/08/hexo/" title="hexo3.0 + github个人博客安装步骤,各种坑总结.">https://zhangzhoufeng.github.io/2016/07/08/hexo/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/07/08/hexo/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/27/scanQRCode/" title="二维码扫描">https://zhangzhoufeng.github.io/2016/08/27/scanQRCode/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/08/27/scanQRCode/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -330,15 +308,20 @@ $ npm install hexo-cli -g
 
 <nav id="article-nav">
   
-    <a href="/2016/07/08/markdown/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/09/10/webSocket/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          使用markdown语法编写博客
+          webSocket使用记录
         
       </div>
     </a>
   
+  
+    <a href="/2016/07/29/webViewLocalFile/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">UIWebView加载本地HTML文件</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -347,7 +330,7 @@ $ npm install hexo-cli -g
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本安装流程"><span class="toc-number">1.</span> <span class="toc-text">基本安装流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的坑总结"><span class="toc-number">2.</span> <span class="toc-text">遇到的坑总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#权限问题-如果在开始安装hexo的时候就遇到error"><span class="toc-number">2.1.</span> <span class="toc-text">权限问题,如果在开始安装hexo的时候就遇到error</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误"><span class="toc-number">2.2.</span> <span class="toc-text">执行 hexo deploy 命令,出现error deployer not found:github 的错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt"><span class="toc-number">2.3.</span> <span class="toc-text">{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    ></span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需要导入的库库"><span class="toc-number">1.</span> <span class="toc-text">需要导入的库库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始创建代码"><span class="toc-number">2.</span> <span class="toc-text">开始创建代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描结果的代理方法"><span class="toc-number">3.</span> <span class="toc-text">扫描结果的代理方法</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -409,7 +392,7 @@ $ npm install hexo-cli -g
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/08/hexo/" data-title="hexo3.0 + github个人博客安装步骤,各种坑总结." data-url="https://zhangzhoufeng.github.io/2016/07/08/hexo/"></div>
+    <div class="ds-thread" data-thread-key="2016/08/27/scanQRCode/" data-title="二维码扫描" data-url="https://zhangzhoufeng.github.io/2016/08/27/scanQRCode/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -432,13 +415,15 @@ $ npm install hexo-cli -g
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/08/markdown/" title="上一篇: 使用markdown语法编写博客">
+            <a href="/2016/09/10/webSocket/" title="上一篇: webSocket使用记录">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/07/29/webViewLocalFile/" title="下一篇: UIWebView加载本地HTML文件">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/08/loginAndShareManager/">第三方登陆分享功能封装(QQ 微信 新浪微博)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/webSocket/">webSocket使用记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/27/scanQRCode/">二维码扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webViewLocalFile/">UIWebView加载本地HTML文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度,内容高度获取</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/QRCodeCreat/">iOS原生二维码的生成(OC版 + swift版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-conclusion/">个人对swift基本语法做的一些总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/markdown/">使用markdown语法编写博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></li></ul>
