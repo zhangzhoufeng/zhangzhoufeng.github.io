@@ -3,27 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo3.0 + github个人博客安装步骤,各种坑总结. | 论程序员的自我修养</title>
+  <title>视频压缩裁剪 | 论程序员的自我修养</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
+  <meta name="description" content="使用系统录制器录制的视频分辨率大小不符合实际需求,而且内存比较大,所以对视频做了一个裁剪和压缩处理.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo3.0 + github个人博客安装步骤,各种坑总结.">
-<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/07/08/hexo/index.html">
+<meta property="og:title" content="视频压缩裁剪">
+<meta property="og:url" content="https://zhangzhoufeng.github.io/2017/02/14/videoReduce/index.html">
 <meta property="og:site_name" content="论程序员的自我修养">
-<meta property="og:description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
-<meta property="og:updated_time" content="2016-07-21T07:33:55.000Z">
+<meta property="og:description" content="使用系统录制器录制的视频分辨率大小不符合实际需求,而且内存比较大,所以对视频做了一个裁剪和压缩处理.">
+<meta property="og:updated_time" content="2017-08-02T09:24:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo3.0 + github个人博客安装步骤,各种坑总结.">
-<meta name="twitter:description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
+<meta name="twitter:title" content="视频压缩裁剪">
+<meta name="twitter:description" content="使用系统录制器录制的视频分辨率大小不符合实际需求,而且内存比较大,所以对视频做了一个裁剪和压缩处理.">
   
     <link rel="alternative" href="/atom.xml" title="论程序员的自我修养" type="application/atom+xml">
   
@@ -216,11 +207,11 @@ sudo npm install -g hexo">
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-videoReduce" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/08/hexo/" class="article-date">
-      <time datetime="2016-07-08T07:16:29.000Z" itemprop="datePublished">2016-07-08</time>
+      <a href="/2017/02/14/videoReduce/" class="article-date">
+      <time datetime="2017-02-14T09:42:15.000Z" itemprop="datePublished">2017-02-14</time>
 </a>
     </div>
   
@@ -233,7 +224,7 @@ sudo npm install -g hexo">
         
   
     <h1 class="article-title" itemprop="name">
-      hexo3.0 + github个人博客安装步骤,各种坑总结.
+      视频压缩裁剪
     </h1>
   
 
@@ -244,7 +235,7 @@ sudo npm install -g hexo">
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo安装/">hexo安装</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/video/">video</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -254,56 +245,29 @@ sudo npm install -g hexo">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="基本安装流程"><a href="#基本安装流程" class="headerlink" title="基本安装流程"></a><strong>基本安装流程</strong></h3><ol>
-<li>安装<a href="https://nodejs.org/en/&quot;&quot;" target="_blank" rel="external">note.js</a></li>
-<li>安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装<blockquote>
-<p>sudo npm install -g hexo</p>
-<a id="more"></a></blockquote>
-</li>
-<li>初始化hexo<blockquote>
-<p>sudo hexo init</p>
+        <h2 id="使用系统录制器录制的视频分辨率大小不符合实际需求-而且内存比较大-所以对视频做了一个裁剪和压缩处理"><a href="#使用系统录制器录制的视频分辨率大小不符合实际需求-而且内存比较大-所以对视频做了一个裁剪和压缩处理" class="headerlink" title="使用系统录制器录制的视频分辨率大小不符合实际需求,而且内存比较大,所以对视频做了一个裁剪和压缩处理."></a>使用系统录制器录制的视频分辨率大小不符合实际需求,而且内存比较大,所以对视频做了一个裁剪和压缩处理.</h2><a id="more"></a>
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><blockquote>
+<p>//宽高比例<br>    #define Ratio 0.7<br>    AVURLAsset <em>asset = [[AVURLAsset alloc]initWithURL:url options:nil];<br>    NSTimeInterval duration = CMTimeGetSeconds(asset.duration);<br>    NSLog(@”生成的视频片段:%@”,asset);<br>    //拍摄时间总长<br>    Float64 totalSecconds = duration;<br>    //每秒录制帧数<br>    int32_t framesPerSecond = 20;<br>    AVMutableComposition </em>composion = [[AVMutableComposition alloc]init];<br>    CMPersistentTrackID ida = 0;</p>
 </blockquote>
-</li>
-<li>安装依赖包<blockquote>
-<p>sudo npm install</p>
+<h3 id="合并视频音频轨道"><a href="#合并视频音频轨道" class="headerlink" title="合并视频音频轨道"></a>合并视频音频轨道</h3><blockquote>
+<p>AVMutableCompositionTrack *firstTrack = [composion addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:ida];<br>    AVMutableCompositionTrack *audioTrack = [composion addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:ida];<br>    CMTime inserTime = kCMTimeZero;<br>    [firstTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, asset.duration) ofTrack:[asset tracksWithMediaType:AVMediaTypeVideo][0] atTime:inserTime error:nil];<br>    [audioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, asset.duration) ofTrack:[asset tracksWithMediaType:AVMediaTypeAudio][0] atTime:inserTime error:nil];<br>    inserTime = CMTimeAdd(inserTime, asset.duration);</p>
 </blockquote>
-</li>
-<li>生成静态网页<blockquote>
-<p>sudo hexo generate</p>
+<h3 id="旋转视频图像-防止90度颠倒"><a href="#旋转视频图像-防止90度颠倒" class="headerlink" title="旋转视频图像 防止90度颠倒"></a>旋转视频图像 防止90度颠倒</h3><blockquote>
+<p>firstTrack.preferredTransform = CGAffineTransformMakeRotation(M_PI_2);<br>    NSLog(@”视频原尺寸:%@”,NSStringFromCGSize(firstTrack.naturalSize));</p>
 </blockquote>
-</li>
-<li>运行本地服务器,浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>如果可以访问,代表hexo已经配置成功。<blockquote>
-<p>sudo hexo server</p>
+<h3 id="定义最终生成的尺寸"><a href="#定义最终生成的尺寸" class="headerlink" title="定义最终生成的尺寸"></a>定义最终生成的尺寸</h3><blockquote>
+<p>CGSize renderSize = CGSizeMake(firstTrack.naturalSize.height, firstTrack.naturalSize.height * Ratio);<br>    NSLog(@”渲染后的尺寸:%@”,NSStringFromCGSize(renderSize));</p>
 </blockquote>
-</li>
-<li>创建博文<blockquote>
-<p>sudo hexo new “postName”</p>
+<h3 id="通过AVMutableVideoComposition实现视频的裁剪-矩形，截取正中心区域视频"><a href="#通过AVMutableVideoComposition实现视频的裁剪-矩形，截取正中心区域视频" class="headerlink" title="通过AVMutableVideoComposition实现视频的裁剪(矩形，截取正中心区域视频)"></a>通过AVMutableVideoComposition实现视频的裁剪(矩形，截取正中心区域视频)</h3><blockquote>
+<p>AVMutableVideoComposition *videoComposition = [[AVMutableVideoComposition alloc]init];<br>    videoComposition.frameDuration = CMTimeMake(1,framesPerSecond);<br>    videoComposition.renderSize = renderSize;<br>    AVMutableVideoCompositionInstruction <em>instruction = [[AVMutableVideoCompositionInstruction alloc]init];<br>    instruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(totalSecconds, framesPerSecond));<br>    AVMutableVideoCompositionLayerInstruction </em>transformer = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:firstTrack];<br>    CGAffineTransform t1 = CGAffineTransformMakeTranslation(firstTrack.naturalSize.height, -(firstTrack.naturalSize.width-(firstTrack.naturalSize.height * Ratio))/2 );<br>    CGAffineTransform t2 = CGAffineTransformRotate(t1, M_PI_2);<br>    CGAffineTransform finalTransform = t2;<br>    [transformer setTransform:finalTransform atTime:kCMTimeZero];<br>    instruction.layerInstructions = @[transformer];<br>    videoComposition.instructions = @[instruction];</p>
 </blockquote>
-</li>
-<li>在根目录下_config.yml文件中部署github地址,在文件最底部添加,仓库名格式必须是[<em>username_github.io]</em><blockquote>
-<p>deploy:<br>type: git<br>repository: <a href="https://github.com/xzhangzhoufeng/zhangzhoufeng.github.io.git" target="_blank" rel="external">https://github.com/xzhangzhoufeng/zhangzhoufeng.github.io.git</a><br>branch: master   </p>
+<h3 id="处理后的视频路径"><a href="#处理后的视频路径" class="headerlink" title="处理后的视频路径"></a>处理后的视频路径</h3><blockquote>
+<p>NSString *destinationPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@”myVidio2.mov”];<br>    NSFileManager *manager = [NSFileManager defaultManager];<br>    if ([manager fileExistsAtPath:destinationPath]){<br>        [manager removeItemAtPath:destinationPath error:nil];<br>    }<br>    NSURL *videoPath = [NSURL fileURLWithPath:destinationPath];</p>
 </blockquote>
-</li>
-<li>Hexo 3.0后，需要把deployer的类型从github改成git，另外需要加入相应的包<blockquote>
-<p>sudo npm install hexo-deployer-git --save</p>
+<h3 id="对视频做相应的压缩"><a href="#对视频做相应的压缩" class="headerlink" title="对视频做相应的压缩"></a>对视频做相应的压缩</h3><blockquote>
+<p> AVAssetExportSession *exporter = [[AVAssetExportSession alloc]initWithAsset:composion presetName:AVAssetExportPresetMediumQuality];//压缩等级<br>    exporter.outputURL = videoPath;<br>    exporter.outputFileType = AVFileTypeMPEG4;<br>    exporter.videoComposition = videoComposition;<br>    exporter.shouldOptimizeForNetworkUse = YES;<br>    exporter.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(totalSecconds, framesPerSecond));<br>    //处理成功后<br>    [exporter exportAsynchronouslyWithCompletionHandler:^{<br>        NSLog(@”压缩裁剪后的视频路径:%@”,destinationPath);<br>    }];</p>
 </blockquote>
-</li>
-<li>执行命令上传到github(如果顺利,第一次添加需要输入github的username和密码)<blockquote>
-<p> sudo hexo deploy</p>
-</blockquote>
-</li>
-<li><strong>ps</strong>:网上很多教程命令中最前面都没有sudo,这个与操作权限有关,为了避免因权限问题出现安装不成功的情况,建议每条命令都加上  </li>
-</ol>
-<h3 id="遇到的坑总结"><a href="#遇到的坑总结" class="headerlink" title="遇到的坑总结"></a><strong>遇到的坑总结</strong></h3><h4 id="权限问题-如果在开始安装hexo的时候就遇到error"><a href="#权限问题-如果在开始安装hexo的时候就遇到error" class="headerlink" title="权限问题,如果在开始安装hexo的时候就遇到error"></a>权限问题,如果在开始安装hexo的时候就遇到error</h4><p>可能就是权限的问题,在每条命令上都添加sudo.</p>
-<h4 id="执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误"><a href="#执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误" class="headerlink" title="执行 hexo deploy 命令,出现error deployer not found:github 的错误"></a>执行 hexo deploy 命令,出现error deployer not found:github 的错误</h4><p>github配置的问题,执行[sudo npm install hexo-deployer-git --save],再配置</p>
-<h4 id="Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt"><a href="#Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt" class="headerlink" title="{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    &gt;"></a>{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    &gt;</h4><p> 网上最靠谱的解决办法</p>
-<blockquote>
-<p>sudo npm install hexo –no-optional   </p>
-<pre><code>##### 如果不成功,可以执行下面这种方法
-$ npm uninstall hexo-cli -g
-$ npm install hexo-cli -g
-</code></pre></blockquote>
-
+<h2 id="github下载地址-https-github-com-zhangzhoufeng-VIdeoPlayer-工程中的VideoTailoring-h文件"><a href="#github下载地址-https-github-com-zhangzhoufeng-VIdeoPlayer-工程中的VideoTailoring-h文件" class="headerlink" title="github下载地址:https://github.com/zhangzhoufeng/VIdeoPlayer 工程中的VideoTailoring.h文件"></a>github下载地址:<a href="https://github.com/zhangzhoufeng/VIdeoPlayer" target="_blank" rel="external">https://github.com/zhangzhoufeng/VIdeoPlayer</a> 工程中的VideoTailoring.h文件</h2>
       
     </div>
     
@@ -311,13 +275,13 @@ $ npm install hexo-cli -g
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/14/videoReduce/">视频压缩裁剪</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
-        <p><span>发布时间:</span>2016年07月08日 - 15时16分</p>
-        <p><span>最后更新:</span>2016年07月21日 - 15时33分</p>
+        <p><span>发布时间:</span>2017年02月14日 - 17时42分</p>
+        <p><span>最后更新:</span>2017年08月02日 - 17时24分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/08/hexo/" title="hexo3.0 + github个人博客安装步骤,各种坑总结.">https://zhangzhoufeng.github.io/2016/07/08/hexo/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/07/08/hexo/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/14/videoReduce/" title="视频压缩裁剪">https://zhangzhoufeng.github.io/2017/02/14/videoReduce/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2017/02/14/videoReduce/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -330,15 +294,20 @@ $ npm install hexo-cli -g
 
 <nav id="article-nav">
   
-    <a href="/2016/07/08/markdown/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/02/videoPlayer/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          使用markdown语法编写博客
+          videoPlayer
         
       </div>
     </a>
   
+  
+    <a href="/2016/12/29/videoRecord/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">视频录制开发记录</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -347,7 +316,7 @@ $ npm install hexo-cli -g
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本安装流程"><span class="toc-number">1.</span> <span class="toc-text">基本安装流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的坑总结"><span class="toc-number">2.</span> <span class="toc-text">遇到的坑总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#权限问题-如果在开始安装hexo的时候就遇到error"><span class="toc-number">2.1.</span> <span class="toc-text">权限问题,如果在开始安装hexo的时候就遇到error</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误"><span class="toc-number">2.2.</span> <span class="toc-text">执行 hexo deploy 命令,出现error deployer not found:github 的错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt"><span class="toc-number">2.3.</span> <span class="toc-text">{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    ></span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用系统录制器录制的视频分辨率大小不符合实际需求-而且内存比较大-所以对视频做了一个裁剪和压缩处理"><span class="toc-number">1.</span> <span class="toc-text">使用系统录制器录制的视频分辨率大小不符合实际需求,而且内存比较大,所以对视频做了一个裁剪和压缩处理.</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本配置"><span class="toc-number">1.1.</span> <span class="toc-text">基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并视频音频轨道"><span class="toc-number">1.2.</span> <span class="toc-text">合并视频音频轨道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转视频图像-防止90度颠倒"><span class="toc-number">1.3.</span> <span class="toc-text">旋转视频图像 防止90度颠倒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义最终生成的尺寸"><span class="toc-number">1.4.</span> <span class="toc-text">定义最终生成的尺寸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过AVMutableVideoComposition实现视频的裁剪-矩形，截取正中心区域视频"><span class="toc-number">1.5.</span> <span class="toc-text">通过AVMutableVideoComposition实现视频的裁剪(矩形，截取正中心区域视频)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理后的视频路径"><span class="toc-number">1.6.</span> <span class="toc-text">处理后的视频路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对视频做相应的压缩"><span class="toc-number">1.7.</span> <span class="toc-text">对视频做相应的压缩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github下载地址-https-github-com-zhangzhoufeng-VIdeoPlayer-工程中的VideoTailoring-h文件"><span class="toc-number">2.</span> <span class="toc-text">github下载地址:https://github.com/zhangzhoufeng/VIdeoPlayer 工程中的VideoTailoring.h文件</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -409,7 +378,7 @@ $ npm install hexo-cli -g
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/08/hexo/" data-title="hexo3.0 + github个人博客安装步骤,各种坑总结." data-url="https://zhangzhoufeng.github.io/2016/07/08/hexo/"></div>
+    <div class="ds-thread" data-thread-key="2017/02/14/videoReduce/" data-title="视频压缩裁剪" data-url="https://zhangzhoufeng.github.io/2017/02/14/videoReduce/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -432,13 +401,15 @@ $ npm install hexo-cli -g
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/08/markdown/" title="上一篇: 使用markdown语法编写博客">
+            <a href="/2017/08/02/videoPlayer/" title="上一篇: videoPlayer">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/12/29/videoRecord/" title="下一篇: 视频录制开发记录">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/videoPlayer/">videoPlayer</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/14/videoReduce/">视频压缩裁剪</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/videoRecord/">视频录制开发记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/UIWebView-WKWebView/">UIWebView与WKWebView封装适配ios7.0+</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/08/loginAndShareManager/">第三方登陆分享功能封装(QQ 微信 新浪微博)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/webSocket/">webSocket使用记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/27/scanQRCode/">二维码扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webViewLocalFile/">UIWebView加载本地HTML文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度,内容高度获取</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/QRCodeCreat/">iOS原生二维码的生成(OC版 + swift版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-conclusion/">个人对swift基本语法做的一些总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/markdown/">使用markdown语法编写博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></li></ul>

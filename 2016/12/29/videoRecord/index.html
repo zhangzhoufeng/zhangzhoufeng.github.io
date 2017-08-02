@@ -3,27 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo3.0 + github个人博客安装步骤,各种坑总结. | 论程序员的自我修养</title>
+  <title>视频录制开发记录 | 论程序员的自我修养</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
+  <meta name="description" content="1. 创建视频设备
+AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+
+2. 初始化一个摄像头输入设备
+ AVCaptureDeviceInput *inputVideo = [AVCaptureDeviceInput deviceInputWithDevice:devi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo3.0 + github个人博客安装步骤,各种坑总结.">
-<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/07/08/hexo/index.html">
+<meta property="og:title" content="视频录制开发记录">
+<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/12/29/videoRecord/index.html">
 <meta property="og:site_name" content="论程序员的自我修养">
-<meta property="og:description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
-<meta property="og:updated_time" content="2016-07-21T07:33:55.000Z">
+<meta property="og:description" content="1. 创建视频设备
+AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+
+2. 初始化一个摄像头输入设备
+ AVCaptureDeviceInput *inputVideo = [AVCaptureDeviceInput deviceInputWithDevice:devi">
+<meta property="og:updated_time" content="2017-08-02T08:57:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo3.0 + github个人博客安装步骤,各种坑总结.">
-<meta name="twitter:description" content="基本安装流程
-安装note.js
-安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装
-sudo npm install -g hexo">
+<meta name="twitter:title" content="视频录制开发记录">
+<meta name="twitter:description" content="1. 创建视频设备
+AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+
+2. 初始化一个摄像头输入设备
+ AVCaptureDeviceInput *inputVideo = [AVCaptureDeviceInput deviceInputWithDevice:devi">
   
     <link rel="alternative" href="/atom.xml" title="论程序员的自我修养" type="application/atom+xml">
   
@@ -216,11 +219,11 @@ sudo npm install -g hexo">
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-videoRecord" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/08/hexo/" class="article-date">
-      <time datetime="2016-07-08T07:16:29.000Z" itemprop="datePublished">2016-07-08</time>
+      <a href="/2016/12/29/videoRecord/" class="article-date">
+      <time datetime="2016-12-29T03:40:47.000Z" itemprop="datePublished">2016-12-29</time>
 </a>
     </div>
   
@@ -233,7 +236,7 @@ sudo npm install -g hexo">
         
   
     <h1 class="article-title" itemprop="name">
-      hexo3.0 + github个人博客安装步骤,各种坑总结.
+      视频录制开发记录
     </h1>
   
 
@@ -244,7 +247,7 @@ sudo npm install -g hexo">
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo安装/">hexo安装</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/video/">video</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -254,55 +257,46 @@ sudo npm install -g hexo">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="基本安装流程"><a href="#基本安装流程" class="headerlink" title="基本安装流程"></a><strong>基本安装流程</strong></h3><ol>
-<li>安装<a href="https://nodejs.org/en/&quot;&quot;" target="_blank" rel="external">note.js</a></li>
-<li>安装hexo,终端进入需要创建博客的文件夹,利用npm命令即可安装<blockquote>
-<p>sudo npm install -g hexo</p>
-<a id="more"></a></blockquote>
-</li>
-<li>初始化hexo<blockquote>
-<p>sudo hexo init</p>
+        <h3 id="1-创建视频设备"><a href="#1-创建视频设备" class="headerlink" title="1. 创建视频设备"></a>1. 创建视频设备</h3><blockquote>
+<p>AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];</p>
 </blockquote>
-</li>
-<li>安装依赖包<blockquote>
-<p>sudo npm install</p>
+<h3 id="2-初始化一个摄像头输入设备"><a href="#2-初始化一个摄像头输入设备" class="headerlink" title="2. 初始化一个摄像头输入设备"></a>2. 初始化一个摄像头输入设备</h3><blockquote>
+<p> AVCaptureDeviceInput *inputVideo = [AVCaptureDeviceInput deviceInputWithDevice:device error:NULL];</p>
 </blockquote>
-</li>
-<li>生成静态网页<blockquote>
-<p>sudo hexo generate</p>
+<a id="more"></a>
+<h3 id="3-创建麦克风设备"><a href="#3-创建麦克风设备" class="headerlink" title="3. 创建麦克风设备"></a>3. 创建麦克风设备</h3><blockquote>
+<p>AVCaptureDevice *deviceAudio = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];</p>
 </blockquote>
-</li>
-<li>运行本地服务器,浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>如果可以访问,代表hexo已经配置成功。<blockquote>
-<p>sudo hexo server</p>
+<h3 id="4-初始化麦克风输入设备"><a href="#4-初始化麦克风输入设备" class="headerlink" title="4. 初始化麦克风输入设备"></a>4. 初始化麦克风输入设备</h3><blockquote>
+<p>AVCaptureDeviceInput *inputAudio = [AVCaptureDeviceInput deviceInputWithDevice:deviceAudio error:NULL];</p>
 </blockquote>
-</li>
-<li>创建博文<blockquote>
-<p>sudo hexo new “postName”</p>
+<h3 id="5-初始化一个movie的文件输出"><a href="#5-初始化一个movie的文件输出" class="headerlink" title="5. 初始化一个movie的文件输出"></a>5. 初始化一个movie的文件输出</h3><blockquote>
+<p>AVCaptureMovieFileOutput *output = [[AVCaptureMovieFileOutput alloc] init];<br>//设置录制时间与每秒帧数<br>Float64 seconds = self.recordTimeout;//录制时间<br>int32_t frameNumber = 20;//每秒帧数<br>output.maxRecordedDuration = CMTimeMakeWithSeconds(seconds, frameNumber);</p>
 </blockquote>
-</li>
-<li>在根目录下_config.yml文件中部署github地址,在文件最底部添加,仓库名格式必须是[<em>username_github.io]</em><blockquote>
-<p>deploy:<br>type: git<br>repository: <a href="https://github.com/xzhangzhoufeng/zhangzhoufeng.github.io.git" target="_blank" rel="external">https://github.com/xzhangzhoufeng/zhangzhoufeng.github.io.git</a><br>branch: master   </p>
+<h3 id="6-初始化一个会话"><a href="#6-初始化一个会话" class="headerlink" title="6.初始化一个会话"></a>6.初始化一个会话</h3><blockquote>
+<p>AVCaptureSession *session = [[AVCaptureSession alloc]init];<br>    //视频录制分辨率<br>    if ([session canSetSessionPreset:AVCaptureSessionPreset640x480]) {<br>       [session setSessionPreset:AVCaptureSessionPreset640x480];<br>    }</p>
 </blockquote>
-</li>
-<li>Hexo 3.0后，需要把deployer的类型从github改成git，另外需要加入相应的包<blockquote>
-<p>sudo npm install hexo-deployer-git --save</p>
+<h3 id="7-将输入输出设备添加到会话中"><a href="#7-将输入输出设备添加到会话中" class="headerlink" title="7. 将输入输出设备添加到会话中"></a>7. 将输入输出设备添加到会话中</h3><blockquote>
+<p>if ([session canAddInput:inputVideo]) {<br>[session addInput:inputVideo];<br>    }<br>    if ([session canAddInput:inputAudio]) {<br>[session addInput:inputAudio];<br>    }<br>    if ([session canAddOutput:output]) {<br>[session addOutput:output];<br>    }</p>
 </blockquote>
-</li>
-<li>执行命令上传到github(如果顺利,第一次添加需要输入github的username和密码)<blockquote>
-<p> sudo hexo deploy</p>
+<h3 id="8-创建一个预览涂层"><a href="#8-创建一个预览涂层" class="headerlink" title="8. 创建一个预览涂层"></a>8. 创建一个预览涂层</h3><blockquote>
+<p>AVCaptureVideoPreviewLayer *preLayer = [AVCaptureVideoPreviewLayer layerWithSession:session];<br>    // 设置图层的大小<br>    preLayer.frame = self.view.bounds;<br>    preLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;<br>    [self.view.layer addSublayer:preLayer];</p>
 </blockquote>
-</li>
-<li><strong>ps</strong>:网上很多教程命令中最前面都没有sudo,这个与操作权限有关,为了避免因权限问题出现安装不成功的情况,建议每条命令都加上  </li>
-</ol>
-<h3 id="遇到的坑总结"><a href="#遇到的坑总结" class="headerlink" title="遇到的坑总结"></a><strong>遇到的坑总结</strong></h3><h4 id="权限问题-如果在开始安装hexo的时候就遇到error"><a href="#权限问题-如果在开始安装hexo的时候就遇到error" class="headerlink" title="权限问题,如果在开始安装hexo的时候就遇到error"></a>权限问题,如果在开始安装hexo的时候就遇到error</h4><p>可能就是权限的问题,在每条命令上都添加sudo.</p>
-<h4 id="执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误"><a href="#执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误" class="headerlink" title="执行 hexo deploy 命令,出现error deployer not found:github 的错误"></a>执行 hexo deploy 命令,出现error deployer not found:github 的错误</h4><p>github配置的问题,执行[sudo npm install hexo-deployer-git --save],再配置</p>
-<h4 id="Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt"><a href="#Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt" class="headerlink" title="{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    &gt;"></a>{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    &gt;</h4><p> 网上最靠谱的解决办法</p>
-<blockquote>
-<p>sudo npm install hexo –no-optional   </p>
-<pre><code>##### 如果不成功,可以执行下面这种方法
-$ npm uninstall hexo-cli -g
-$ npm install hexo-cli -g
-</code></pre></blockquote>
+<h3 id="9-开启会话-准备录制"><a href="#9-开启会话-准备录制" class="headerlink" title="9. 开启会话,准备录制"></a>9. 开启会话,准备录制</h3><blockquote>
+<p>[session startRunning];</p>
+</blockquote>
+<h3 id="10-开始录制视频"><a href="#10-开始录制视频" class="headerlink" title="10. 开始录制视频"></a>10. 开始录制视频</h3><blockquote>
+<p>//设置录制视频保存的路径<br>    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@”myVidio.mov”];<br>    //转为视频保存的url<br>    NSURL *url = [NSURL fileURLWithPath:path];<br>    //开始录制,并设置控制器为录制的代理<br>    [self.output startRecordingToOutputFileURL:url recordingDelegate:self];<br>    [self.view.layer addSublayer:self.preLayer];</p>
+</blockquote>
+<h3 id="11-停止录制"><a href="#11-停止录制" class="headerlink" title="11. 停止录制"></a>11. 停止录制</h3><blockquote>
+<p>[self.output stopRecording];</p>
+</blockquote>
+<h3 id="12-录制完成代理"><a href="#12-录制完成代理" class="headerlink" title="12. 录制完成代理"></a>12. 录制完成代理</h3><blockquote>
+<p>- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error;</p>
+</blockquote>
+<h3 id="13-计算文件大小"><a href="#13-计算文件大小" class="headerlink" title="13. 计算文件大小"></a>13. 计算文件大小</h3><blockquote>
+<p>-(long long) fileSizeAtPath:(NSString *) filePath{<br>    NSFileManager *manager = [NSFileManager defaultManager];<br>    if ([manager fileExistsAtPath:filePath]){<br>        return [[manager attributesOfItemAtPath:filePath error:nil] fileSize]/1024;<br>    }<br>    return 0;<br>}</p>
+</blockquote>
 
       
     </div>
@@ -311,13 +305,13 @@ $ npm install hexo-cli -g
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/29/videoRecord/">视频录制开发记录</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
-        <p><span>发布时间:</span>2016年07月08日 - 15时16分</p>
-        <p><span>最后更新:</span>2016年07月21日 - 15时33分</p>
+        <p><span>发布时间:</span>2016年12月29日 - 11时40分</p>
+        <p><span>最后更新:</span>2017年08月02日 - 16时57分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/08/hexo/" title="hexo3.0 + github个人博客安装步骤,各种坑总结.">https://zhangzhoufeng.github.io/2016/07/08/hexo/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/07/08/hexo/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/29/videoRecord/" title="视频录制开发记录">https://zhangzhoufeng.github.io/2016/12/29/videoRecord/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/12/29/videoRecord/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -330,15 +324,20 @@ $ npm install hexo-cli -g
 
 <nav id="article-nav">
   
-    <a href="/2016/07/08/markdown/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/14/videoReduce/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          使用markdown语法编写博客
+          视频压缩裁剪
         
       </div>
     </a>
   
+  
+    <a href="/2016/11/20/UIWebView-WKWebView/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">UIWebView与WKWebView封装适配ios7.0+</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -347,7 +346,7 @@ $ npm install hexo-cli -g
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本安装流程"><span class="toc-number">1.</span> <span class="toc-text">基本安装流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的坑总结"><span class="toc-number">2.</span> <span class="toc-text">遇到的坑总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#权限问题-如果在开始安装hexo的时候就遇到error"><span class="toc-number">2.1.</span> <span class="toc-text">权限问题,如果在开始安装hexo的时候就遇到error</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行-hexo-deploy-命令-出现error-deployer-not-found-github-的错误"><span class="toc-number">2.2.</span> <span class="toc-text">执行 hexo deploy 命令,出现error deployer not found:github 的错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Error-Cannot-find-module-‘-build-Release-DTraceProviderBindings’-code-‘MODULE-NOT-FOUND’-gt"><span class="toc-number">2.3.</span> <span class="toc-text">{[Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’}    ></span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建视频设备"><span class="toc-number">1.</span> <span class="toc-text">1. 创建视频设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-初始化一个摄像头输入设备"><span class="toc-number">2.</span> <span class="toc-text">2. 初始化一个摄像头输入设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-创建麦克风设备"><span class="toc-number">3.</span> <span class="toc-text">3. 创建麦克风设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-初始化麦克风输入设备"><span class="toc-number">4.</span> <span class="toc-text">4. 初始化麦克风输入设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-初始化一个movie的文件输出"><span class="toc-number">5.</span> <span class="toc-text">5. 初始化一个movie的文件输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-初始化一个会话"><span class="toc-number">6.</span> <span class="toc-text">6.初始化一个会话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-将输入输出设备添加到会话中"><span class="toc-number">7.</span> <span class="toc-text">7. 将输入输出设备添加到会话中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-创建一个预览涂层"><span class="toc-number">8.</span> <span class="toc-text">8. 创建一个预览涂层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-开启会话-准备录制"><span class="toc-number">9.</span> <span class="toc-text">9. 开启会话,准备录制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-开始录制视频"><span class="toc-number">10.</span> <span class="toc-text">10. 开始录制视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-停止录制"><span class="toc-number">11.</span> <span class="toc-text">11. 停止录制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-录制完成代理"><span class="toc-number">12.</span> <span class="toc-text">12. 录制完成代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-计算文件大小"><span class="toc-number">13.</span> <span class="toc-text">13. 计算文件大小</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -409,7 +408,7 @@ $ npm install hexo-cli -g
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/08/hexo/" data-title="hexo3.0 + github个人博客安装步骤,各种坑总结." data-url="https://zhangzhoufeng.github.io/2016/07/08/hexo/"></div>
+    <div class="ds-thread" data-thread-key="2016/12/29/videoRecord/" data-title="视频录制开发记录" data-url="https://zhangzhoufeng.github.io/2016/12/29/videoRecord/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -432,13 +431,15 @@ $ npm install hexo-cli -g
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/08/markdown/" title="上一篇: 使用markdown语法编写博客">
+            <a href="/2017/02/14/videoReduce/" title="上一篇: 视频压缩裁剪">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/11/20/UIWebView-WKWebView/" title="下一篇: UIWebView与WKWebView封装适配ios7.0+">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/videoPlayer/">videoPlayer</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/14/videoReduce/">视频压缩裁剪</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/videoRecord/">视频录制开发记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/UIWebView-WKWebView/">UIWebView与WKWebView封装适配ios7.0+</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/08/loginAndShareManager/">第三方登陆分享功能封装(QQ 微信 新浪微博)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/webSocket/">webSocket使用记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/27/scanQRCode/">二维码扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webViewLocalFile/">UIWebView加载本地HTML文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度,内容高度获取</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/QRCodeCreat/">iOS原生二维码的生成(OC版 + swift版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-conclusion/">个人对swift基本语法做的一些总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/markdown/">使用markdown语法编写博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></li></ul>
