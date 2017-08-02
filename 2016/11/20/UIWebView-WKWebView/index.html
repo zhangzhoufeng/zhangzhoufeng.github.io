@@ -8,10 +8,10 @@
   <meta name="description" content="iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.github地址:webView适配封装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIWebView与WKWebView封装适配ios7.0+">
-<meta property="og:url" content="https://zhangzhoufeng.github.io/2017/08/02/UIWebView-WKWebView/index.html">
+<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/11/20/UIWebView-WKWebView/index.html">
 <meta property="og:site_name" content="论程序员的自我修养">
 <meta property="og:description" content="iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.github地址:webView适配封装">
-<meta property="og:updated_time" content="2017-08-02T07:21:44.000Z">
+<meta property="og:updated_time" content="2017-08-02T07:36:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIWebView与WKWebView封装适配ios7.0+">
 <meta name="twitter:description" content="iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.github地址:webView适配封装">
@@ -210,8 +210,8 @@
       <div class="body-wrap"><article id="post-UIWebView-WKWebView" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/08/02/UIWebView-WKWebView/" class="article-date">
-      <time datetime="2017-08-02T06:29:05.000Z" itemprop="datePublished">2017-08-02</time>
+      <a href="/2016/11/20/UIWebView-WKWebView/" class="article-date">
+      <time datetime="2016-11-20T06:29:05.000Z" itemprop="datePublished">2016-11-20</time>
 </a>
     </div>
   
@@ -253,6 +253,16 @@
 <h4 id="代理方法"><a href="#代理方法" class="headerlink" title="代理方法"></a>代理方法</h4><blockquote>
 <p>/** webView开始加载 */<br>- (void)webViewDidStartLoad:(id)webView;<br>/** webView加载完成 */<br>- (void)webViewDidFinishLoad:(id)webView webViewHeight:(CGFloat)height;<br>/** webView加载失败 */<br>- (void)webView:(id)webView didFailLoadWithError:(NSError *)error;<br>/** webView内部跳转 */<br>- (void)webView:(id)webView shouldStartLoadWithUrl:(NSString *)url;</p>
 </blockquote>
+<h3 id="github上的demo中的AKMWebView做了一个继承使用-扩展了webView更多功能"><a href="#github上的demo中的AKMWebView做了一个继承使用-扩展了webView更多功能" class="headerlink" title="github上的demo中的AKMWebView做了一个继承使用,扩展了webView更多功能."></a>github上的demo中的AKMWebView做了一个继承使用,扩展了webView更多功能.</h3><ol>
+<li>webView添加手势获取webView上的图片<blockquote>
+<p>- (void)webViewClick:(UITapGestureRecognizer *)tap{<br> CGPoint point = [tap locationInView:self];<br> NSString *js = [NSString stringWithFormat:@”document.elementFromPoint(%f, %f).tagName”, point.x, point.y];<br> [self evaluateJavaScript:js completionHandler:^(id tagName) {<br>NSLog(@”%@”,tagName);<br>if ([tap isEqual:@”IMG”]) {<br>NSString *js = [NSString stringWithFormat:@”document.elementFromPoint(%f, %f).src”, point.x, point.y];<br>[self evaluateJavaScript:js completionHandler:^(id src) {<br>NSLog(@”%@”,src);<br>}];<br>}<br> }];<br>}</p>
+</blockquote>
+</li>
+<li>获取webView内容高度<blockquote>
+<p>[self evaluateJavaScript:@”document.body.offsetHeight” completionHandler:^(id htmlHeight) {}];</p>
+</blockquote>
+</li>
+</ol>
 
       
     </div>
@@ -261,13 +271,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/08/02/UIWebView-WKWebView/">UIWebView与WKWebView封装适配ios7.0+</a></p>
+        <p><span>本文标题:</span><a href="/2016/11/20/UIWebView-WKWebView/">UIWebView与WKWebView封装适配ios7.0+</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
-        <p><span>发布时间:</span>2017年08月02日 - 14时29分</p>
-        <p><span>最后更新:</span>2017年08月02日 - 15时21分</p>
+        <p><span>发布时间:</span>2016年11月20日 - 14时29分</p>
+        <p><span>最后更新:</span>2017年08月02日 - 15时36分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/08/02/UIWebView-WKWebView/" title="UIWebView与WKWebView封装适配ios7.0+">https://zhangzhoufeng.github.io/2017/08/02/UIWebView-WKWebView/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2017/08/02/UIWebView-WKWebView/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/20/UIWebView-WKWebView/" title="UIWebView与WKWebView封装适配ios7.0+">https://zhangzhoufeng.github.io/2016/11/20/UIWebView-WKWebView/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/11/20/UIWebView-WKWebView/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -293,7 +303,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-8-0之后出来一个webView新框架WKWebView-比之前的UIWebView在效率-内存占用-加载速度上都快了不少-不过需求要做兼容-所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同-可以继承做二次封装"><span class="toc-number">1.</span> <span class="toc-text">iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化方法"><span class="toc-number">1.1.</span> <span class="toc-text">初始化方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代理方法"><span class="toc-number">1.2.</span> <span class="toc-text">代理方法</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-8-0之后出来一个webView新框架WKWebView-比之前的UIWebView在效率-内存占用-加载速度上都快了不少-不过需求要做兼容-所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同-可以继承做二次封装"><span class="toc-number">1.</span> <span class="toc-text">iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化方法"><span class="toc-number">1.1.</span> <span class="toc-text">初始化方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代理方法"><span class="toc-number">1.2.</span> <span class="toc-text">代理方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github上的demo中的AKMWebView做了一个继承使用-扩展了webView更多功能"><span class="toc-number">2.</span> <span class="toc-text">github上的demo中的AKMWebView做了一个继承使用,扩展了webView更多功能.</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -355,7 +365,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/08/02/UIWebView-WKWebView/" data-title="UIWebView与WKWebView封装适配ios7.0+" data-url="https://zhangzhoufeng.github.io/2017/08/02/UIWebView-WKWebView/"></div>
+    <div class="ds-thread" data-thread-key="2016/11/20/UIWebView-WKWebView/" data-title="UIWebView与WKWebView封装适配ios7.0+" data-url="https://zhangzhoufeng.github.io/2016/11/20/UIWebView-WKWebView/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -387,7 +397,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/UIWebView-WKWebView/">UIWebView与WKWebView封装适配ios7.0+</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/08/loginAndShareManager/">第三方登陆分享功能封装(QQ 微信 新浪微博)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/webSocket/">webSocket使用记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/27/scanQRCode/">二维码扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webViewLocalFile/">UIWebView加载本地HTML文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度,内容高度获取</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/QRCodeCreat/">iOS原生二维码的生成(OC版 + swift版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-conclusion/">个人对swift基本语法做的一些总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/markdown/">使用markdown语法编写博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/UIWebView-WKWebView/">UIWebView与WKWebView封装适配ios7.0+</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/08/loginAndShareManager/">第三方登陆分享功能封装(QQ 微信 新浪微博)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/webSocket/">webSocket使用记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/27/scanQRCode/">二维码扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webViewLocalFile/">UIWebView加载本地HTML文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度,内容高度获取</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/QRCodeCreat/">iOS原生二维码的生成(OC版 + swift版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-conclusion/">个人对swift基本语法做的一些总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/markdown/">使用markdown语法编写博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/hexo/">hexo3.0 + github个人博客安装步骤,各种坑总结.</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
