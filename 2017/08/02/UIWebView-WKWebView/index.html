@@ -3,27 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>UIWebView 自适应宽度,内容高度获取 | 论程序员的自我修养</title>
+  <title>UIWebView与WKWebView封装适配ios7.0+ | 论程序员的自我修养</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图">
+  <meta name="description" content="iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.github地址:webView适配封装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UIWebView 自适应宽度,内容高度获取">
-<meta property="og:url" content="https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/index.html">
+<meta property="og:title" content="UIWebView与WKWebView封装适配ios7.0+">
+<meta property="og:url" content="https://zhangzhoufeng.github.io/2017/08/02/UIWebView-WKWebView/index.html">
 <meta property="og:site_name" content="论程序员的自我修养">
-<meta property="og:description" content="做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图">
-<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/normal.jpg">
-<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/normal_scalesPageToFit.jpeg">
-<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/webViewEdit.png">
-<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/webViewDelegate.png">
-<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/pageWidth.png">
-<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/pageHeight.png">
-<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/last.jpeg">
-<meta property="og:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/lastHeight.jpeg">
-<meta property="og:updated_time" content="2016-07-29T10:10:11.000Z">
+<meta property="og:description" content="iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.github地址:webView适配封装">
+<meta property="og:updated_time" content="2017-08-02T07:21:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UIWebView 自适应宽度,内容高度获取">
-<meta name="twitter:description" content="做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图">
-<meta name="twitter:image" content="https://zhangzhoufeng.github.io/img/webView-adaptation-img/normal.jpg">
+<meta name="twitter:title" content="UIWebView与WKWebView封装适配ios7.0+">
+<meta name="twitter:description" content="iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.github地址:webView适配封装">
   
     <link rel="alternative" href="/atom.xml" title="论程序员的自我修养" type="application/atom+xml">
   
@@ -216,11 +207,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-webView-adaptation" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-UIWebView-WKWebView" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/29/webView-adaptation/" class="article-date">
-      <time datetime="2016-07-29T02:27:04.000Z" itemprop="datePublished">2016-07-29</time>
+      <a href="/2017/08/02/UIWebView-WKWebView/" class="article-date">
+      <time datetime="2017-08-02T06:29:05.000Z" itemprop="datePublished">2017-08-02</time>
 </a>
     </div>
   
@@ -233,7 +224,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      UIWebView 自适应宽度,内容高度获取
+      UIWebView与WKWebView封装适配ios7.0+
     </h1>
   
 
@@ -244,7 +235,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UIWebView/">UIWebView</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webView/">webView</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -254,19 +245,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况-虽然设置webView-scalesPageToFit-YES-但内容会被缩的非常小-要么居中缩小严重-要么偏的太厉害-如下图"><a href="#做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况-虽然设置webView-scalesPageToFit-YES-但内容会被缩的非常小-要么居中缩小严重-要么偏的太厉害-如下图" class="headerlink" title="做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图"></a>做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图</h3><a id="more"></a>
-<p><img src="/img/webView-adaptation-img/normal.jpg" alt="未设置scalesPageToFit=YES前"> <img src="/img/webView-adaptation-img/normal_scalesPageToFit.jpeg" alt="设置scalesPageToFit=YES后"></p>
-<h3 id="HTML本身有一个缩放方法-可以在head里面添加一个节点"><a href="#HTML本身有一个缩放方法-可以在head里面添加一个节点" class="headerlink" title="HTML本身有一个缩放方法,可以在head里面添加一个节点:"></a>HTML本身有一个缩放方法,可以在head里面添加一个节点:</h3><blockquote>
-<p>&lt; meta name=”viewport” content=”initial-scale=1.0, minimum-scale=0.1, maximum-scale=2.0, user-scalable=yes\”></p>
+        <h3 id="iOS-8-0之后出来一个webView新框架WKWebView-比之前的UIWebView在效率-内存占用-加载速度上都快了不少-不过需求要做兼容-所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同-可以继承做二次封装"><a href="#iOS-8-0之后出来一个webView新框架WKWebView-比之前的UIWebView在效率-内存占用-加载速度上都快了不少-不过需求要做兼容-所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同-可以继承做二次封装" class="headerlink" title="iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装."></a>iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.</h3><p>github地址:<a href="https://github.com/zhangzhoufeng/webView" target="_blank" rel="external">webView适配封装</a></p>
+<a id="more"></a>
+<h4 id="初始化方法"><a href="#初始化方法" class="headerlink" title="初始化方法"></a>初始化方法</h4><blockquote>
+<p>ZFWebView *akm = [[ZFWebView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 100)];<br>//    akm.url = @”<a href="https://www.baidu.com" target="_blank" rel="external">https://www.baidu.com</a>“;<br>    [akm loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@”<a href="https://www.baidu.com" target="_blank" rel="external">https://www.baidu.com</a>“]]];<br>    akm.delegate = self;<br>    [self.view addSubview:akm];</p>
 </blockquote>
-<h3 id="开始代码编写-第一次先加载一次HTML代码-用来获取webView的宽度-第一次先隐藏webView"><a href="#开始代码编写-第一次先加载一次HTML代码-用来获取webView的宽度-第一次先隐藏webView" class="headerlink" title="开始代码编写,第一次先加载一次HTML代码,用来获取webView的宽度,第一次先隐藏webView"></a>开始代码编写,第一次先加载一次HTML代码,用来获取webView的宽度,第一次先隐藏webView</h3><p><img src="/img/webView-adaptation-img/webViewEdit.png" alt="初始化webView"> </p>
-<h3 id="第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在里加上我们需要的，然后再将新的html重新加载，加载完成后再显示"><a href="#第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在里加上我们需要的，然后再将新的html重新加载，加载完成后再显示" class="headerlink" title="第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在里加上我们需要的，然后再将新的html重新加载，加载完成后再显示:"></a>第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在<head>里加上我们需要的<meta>，然后再将新的html重新加载，加载完成后再显示:</head></h3><p><img src="/img/webView-adaptation-img/webViewDelegate.png" alt="webView代理"><br><img src="/img/webView-adaptation-img/pageWidth.png" alt="根据比例设置宽度"> </p>
-<h3 id="根据个人需求-获取webView内容的高度-并赋值给webView"><a href="#根据个人需求-获取webView内容的高度-并赋值给webView" class="headerlink" title="根据个人需求,获取webView内容的高度,并赋值给webView:"></a>根据个人需求,获取webView内容的高度,并赋值给webView:</h3><p><img src="/img/webView-adaptation-img/pageHeight.png" alt="webView内容高度获取"> </p>
-<h4 id="方便复制那段长长的代码"><a href="#方便复制那段长长的代码" class="headerlink" title="方便复制那段长长的代码"></a>方便复制那段长长的代码</h4><blockquote>
-<p>//获取内容实际高度（像素）<br>    NSString * height_str= [webView stringByEvaluatingJavaScriptFromString: @”document.getElementById(‘webview_content_wrapper’).offsetHeight + parseInt(window.getComputedStyle(document.getElementsByTagName(‘body’)[0]).getPropertyValue(‘margin-top’))  + parseInt(window.getComputedStyle(document.getElementsByTagName(‘body’)[0]).getPropertyValue(‘margin-bottom’))”];</p>
+<h4 id="代理方法"><a href="#代理方法" class="headerlink" title="代理方法"></a>代理方法</h4><blockquote>
+<p>/** webView开始加载 */<br>- (void)webViewDidStartLoad:(id)webView;<br>/** webView加载完成 */<br>- (void)webViewDidFinishLoad:(id)webView webViewHeight:(CGFloat)height;<br>/** webView加载失败 */<br>- (void)webView:(id)webView didFailLoadWithError:(NSError *)error;<br>/** webView内部跳转 */<br>- (void)webView:(id)webView shouldStartLoadWithUrl:(NSString *)url;</p>
 </blockquote>
-<h3 id="最终显示结果"><a href="#最终显示结果" class="headerlink" title="最终显示结果"></a>最终显示结果</h3><p><img src="/img/webView-adaptation-img/last.jpeg" alt="最终结果"> <img src="/img/webView-adaptation-img/lastHeight.jpeg" alt="webView高度设置"> </p>
-<p>参考文章地址: <a href="http://borissun.iteye.com/blog/2023712" target="_blank" rel="external">http://borissun.iteye.com/blog/2023712</a></p>
 
       
     </div>
@@ -275,13 +261,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/29/webView-adaptation/">UIWebView 自适应宽度,内容高度获取</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/02/UIWebView-WKWebView/">UIWebView与WKWebView封装适配ios7.0+</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
-        <p><span>发布时间:</span>2016年07月29日 - 10时27分</p>
-        <p><span>最后更新:</span>2016年07月29日 - 18时10分</p>
+        <p><span>发布时间:</span>2017年08月02日 - 14时29分</p>
+        <p><span>最后更新:</span>2017年08月02日 - 15时21分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/29/webView-adaptation/" title="UIWebView 自适应宽度,内容高度获取">https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/02/UIWebView-WKWebView/" title="UIWebView与WKWebView封装适配ios7.0+">https://zhangzhoufeng.github.io/2017/08/02/UIWebView-WKWebView/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangzhoufeng.github.io/2017/08/02/UIWebView-WKWebView/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -294,18 +280,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/07/29/webViewLocalFile/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          UIWebView加载本地HTML文件
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/07/21/QRCodeCreat/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS原生二维码的生成(OC版 + swift版)</div>
+    <a href="/2016/10/08/loginAndShareManager/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第三方登陆分享功能封装(QQ 微信 新浪微博)</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -316,7 +293,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况-虽然设置webView-scalesPageToFit-YES-但内容会被缩的非常小-要么居中缩小严重-要么偏的太厉害-如下图"><span class="toc-number">1.</span> <span class="toc-text">做UIWebView开发的时候遇到html内容的宽度太宽与webView宽度不匹配的情况,虽然设置webView.scalesPageToFit = YES,但内容会被缩的非常小,要么居中缩小严重,要么偏的太厉害.如下图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML本身有一个缩放方法-可以在head里面添加一个节点"><span class="toc-number">2.</span> <span class="toc-text">HTML本身有一个缩放方法,可以在head里面添加一个节点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始代码编写-第一次先加载一次HTML代码-用来获取webView的宽度-第一次先隐藏webView"><span class="toc-number">3.</span> <span class="toc-text">开始代码编写,第一次先加载一次HTML代码,用来获取webView的宽度,第一次先隐藏webView</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在里加上我们需要的，然后再将新的html重新加载，加载完成后再显示"><span class="toc-number">4.</span> <span class="toc-text">第一次载入完成后，在代理里边调用js获取宽度，然后算出合适的缩放比例，并在里加上我们需要的，然后再将新的html重新加载，加载完成后再显示:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据个人需求-获取webView内容的高度-并赋值给webView"><span class="toc-number">5.</span> <span class="toc-text">根据个人需求,获取webView内容的高度,并赋值给webView:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方便复制那段长长的代码"><span class="toc-number">5.1.</span> <span class="toc-text">方便复制那段长长的代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最终显示结果"><span class="toc-number">6.</span> <span class="toc-text">最终显示结果</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-8-0之后出来一个webView新框架WKWebView-比之前的UIWebView在效率-内存占用-加载速度上都快了不少-不过需求要做兼容-所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同-可以继承做二次封装"><span class="toc-number">1.</span> <span class="toc-text">iOS 8.0之后出来一个webView新框架WKWebView,比之前的UIWebView在效率,内存占用,加载速度上都快了不少,不过需求要做兼容 所以将UIWebView与WKWebView做了一个封装调用方式与UIWebView相同,可以继承做二次封装.</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化方法"><span class="toc-number">1.1.</span> <span class="toc-text">初始化方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代理方法"><span class="toc-number">1.2.</span> <span class="toc-text">代理方法</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -378,7 +355,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/29/webView-adaptation/" data-title="UIWebView 自适应宽度,内容高度获取" data-url="https://zhangzhoufeng.github.io/2016/07/29/webView-adaptation/"></div>
+    <div class="ds-thread" data-thread-key="2017/08/02/UIWebView-WKWebView/" data-title="UIWebView与WKWebView封装适配ios7.0+" data-url="https://zhangzhoufeng.github.io/2017/08/02/UIWebView-WKWebView/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -401,13 +378,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/29/webViewLocalFile/" title="上一篇: UIWebView加载本地HTML文件">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/07/21/QRCodeCreat/" title="下一篇: iOS原生二维码的生成(OC版 + swift版)">
+            <a href="/2016/10/08/loginAndShareManager/" title="下一篇: 第三方登陆分享功能封装(QQ 微信 新浪微博)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
