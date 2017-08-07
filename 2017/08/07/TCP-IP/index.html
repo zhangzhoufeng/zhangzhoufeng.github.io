@@ -3,23 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第三方登陆分享功能封装(QQ 微信 新浪微博) | 论程序员的自我修养</title>
+  <title>NSStream实现TCP Socket客户端,与硬件直接做交互 | 论程序员的自我修养</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="需求:第三方登陆分享不能使用第三方的框架(友盟,share等),所以自己将使用到的登陆分享做了一个封装,个人感觉调用起来比第三方还方便,下面上代码.github地址:第三方登陆与分享">
+  <meta name="description" content="网络由下往上分为:
+物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
+ 其中IP协议对应于网络层,TCP协议协议对应传输层,HTTP协议对应应用层">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第三方登陆分享功能封装(QQ 微信 新浪微博)">
-<meta property="og:url" content="/2016/10/08/loginAndShareManager/index.html">
+<meta property="og:title" content="NSStream实现TCP Socket客户端,与硬件直接做交互">
+<meta property="og:url" content="/2017/08/07/TCP-IP/index.html">
 <meta property="og:site_name" content="论程序员的自我修养">
-<meta property="og:description" content="需求:第三方登陆分享不能使用第三方的框架(友盟,share等),所以自己将使用到的登陆分享做了一个封装,个人感觉调用起来比第三方还方便,下面上代码.github地址:第三方登陆与分享">
-<meta property="og:image" content="/img/loginAndShareManager-img/cofigImage.png">
-<meta property="og:image" content="/img/loginAndShareManager-img/appDelegateImage-1.png">
-<meta property="og:image" content="/img/loginAndShareManager-img/shareImage.png">
-<meta property="og:image" content="/img/loginAndShareManager-img/loginImage.png">
-<meta property="og:updated_time" content="2017-08-04T08:06:01.000Z">
+<meta property="og:description" content="网络由下往上分为:
+物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
+ 其中IP协议对应于网络层,TCP协议协议对应传输层,HTTP协议对应应用层">
+<meta property="og:updated_time" content="2017-08-07T09:34:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第三方登陆分享功能封装(QQ 微信 新浪微博)">
-<meta name="twitter:description" content="需求:第三方登陆分享不能使用第三方的框架(友盟,share等),所以自己将使用到的登陆分享做了一个封装,个人感觉调用起来比第三方还方便,下面上代码.github地址:第三方登陆与分享">
-<meta name="twitter:image" content="/img/loginAndShareManager-img/cofigImage.png">
+<meta name="twitter:title" content="NSStream实现TCP Socket客户端,与硬件直接做交互">
+<meta name="twitter:description" content="网络由下往上分为:
+物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
+ 其中IP协议对应于网络层,TCP协议协议对应传输层,HTTP协议对应应用层">
   
     <link rel="alternative" href="/atom.xml" title="论程序员的自我修养" type="application/atom+xml">
   
@@ -212,11 +213,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-loginAndShareManager" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-TCP-IP" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/10/08/loginAndShareManager/" class="article-date">
-      <time datetime="2016-10-08T09:39:31.000Z" itemprop="datePublished">2016-10-08</time>
+      <a href="/2017/08/07/TCP-IP/" class="article-date">
+      <time datetime="2017-08-07T06:41:33.000Z" itemprop="datePublished">2017-08-07</time>
 </a>
     </div>
   
@@ -229,7 +230,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      第三方登陆分享功能封装(QQ 微信 新浪微博)
+      NSStream实现TCP Socket客户端,与硬件直接做交互
     </h1>
   
 
@@ -240,7 +241,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方登陆分享/">第三方登陆分享</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -250,16 +251,110 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="需求-第三方登陆分享不能使用第三方的框架-友盟-share等-所以自己将使用到的登陆分享做了一个封装-个人感觉调用起来比第三方还方便-下面上代码"><a href="#需求-第三方登陆分享不能使用第三方的框架-友盟-share等-所以自己将使用到的登陆分享做了一个封装-个人感觉调用起来比第三方还方便-下面上代码" class="headerlink" title="需求:第三方登陆分享不能使用第三方的框架(友盟,share等),所以自己将使用到的登陆分享做了一个封装,个人感觉调用起来比第三方还方便,下面上代码."></a>需求:第三方登陆分享不能使用第三方的框架(友盟,share等),所以自己将使用到的登陆分享做了一个封装,个人感觉调用起来比第三方还方便,下面上代码.</h2><p>github地址:<a href="https://github.com/zhangzhoufeng/loginAndShareManager" target="_blank" rel="external">第三方登陆与分享</a></p>
+        <p> 网络由下往上分为:</p>
+<pre><code>物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
+</code></pre><p> 其中IP协议对应于网络层,TCP协议协议对应传输层,HTTP协议对应应用层</p>
 <a id="more"></a>
-<h3 id="最基础的配置看文档-不一一说明了-将loginAndShareManager导入工程-调用是导入LoginShareHeader-h即可"><a href="#最基础的配置看文档-不一一说明了-将loginAndShareManager导入工程-调用是导入LoginShareHeader-h即可" class="headerlink" title="最基础的配置看文档,不一一说明了,将loginAndShareManager导入工程,调用是导入LoginShareHeader.h即可."></a>最基础的配置看文档,不一一说明了,将loginAndShareManager导入工程,调用是导入LoginShareHeader.h即可.</h3><p>1.在LoginAndShareConfig.h文件中进行各个平台的配置信息设置</p>
-<p><img src="/img/loginAndShareManager-img/cofigImage.png" alt="在LoginAndShareConfig.h文件中进行各个平台的配置信息设置"> </p>
-<p>2.在appdelegate中进行基础配置<br><img src="/img/loginAndShareManager-img/appDelegateImage-1.png" alt="在appdelegate.h中进行基础配置"></p>
-<p>3.分享调用</p>
-<p><img src="/img/loginAndShareManager-img/shareImage.png" alt="分享调用"></p>
-<p>4.登陆调用</p>
-<p><img src="/img/loginAndShareManager-img/loginImage.png" alt="登陆调用"></p>
+<h3 id="TCP连接三次握手"><a href="#TCP连接三次握手" class="headerlink" title="TCP连接三次握手:"></a>TCP连接三次握手:</h3><blockquote>
+<p> 第一次握手：客户端发送syn包(syn=j)到服务器，并进入SYN_SEND状态，等待服务器确认;<br>第二次握手：服务器收到syn包，必须确认客户的SYN(ack=j+1)，同时自己也发送一个SYN包(syn=k)，即SYN+ACK包，此时服务器进入SYN_RECV状态;<br>第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。</p>
+</blockquote>
+<h3 id="利用Socket建立网络连接的步骤：服务器监听，客户端请求，连接确认"><a href="#利用Socket建立网络连接的步骤：服务器监听，客户端请求，连接确认" class="headerlink" title="利用Socket建立网络连接的步骤：服务器监听，客户端请求，连接确认"></a>利用Socket建立网络连接的步骤：服务器监听，客户端请求，连接确认</h3><blockquote>
+<p>　　1、服务器监听：服务器端套接字并不定位具体的客户端套接字，而是处于等待连接的状态，实时监控网络状态，等待客户端的连接请求。<br>　　2、客户端请求：指客户端的套接字提出连接请求，要连接的目标是服务器端的套接字。<br>　　为此，客户端的套接字必须首先描述它要连接的服务器的套接字，指出服务器端套接字的地址和端口号，然后就向服务器端套接字提出连接请求。<br>　　3、连接确认：当服务器端套接字监听到或者说接收到客户端套接字的连接请求时，就响应客户端套接字的请求，建立一个新的线程，把服务器端套接字的描述发给客户端，一旦客户端确认了此描述，双方就正式建立连接。</p>
+</blockquote>
+<h2 id="NSStream使用详解"><a href="#NSStream使用详解" class="headerlink" title="NSStream使用详解"></a>NSStream使用详解</h2><h3 id="属性设置-输入输出流"><a href="#属性设置-输入输出流" class="headerlink" title="属性设置,输入输出流"></a>属性设置,输入输出流</h3><blockquote>
+<p>@property (nonatomic, retain) NSInputStream *inputStream;<br>@property (nonatomic, retain) NSOutputStream *outputStream;</p>
+</blockquote>
+<h3 id="初始化输入输出流-建立连接"><a href="#初始化输入输出流-建立连接" class="headerlink" title="初始化输入输出流,建立连接"></a>初始化输入输出流,建立连接</h3><blockquote>
+<p>CFReadStreamRef readStream;<br>CFWriteStreamRef writeStream;<br>CFStreamCreatePairWithSocketToHost(NULL,(<strong>bridge CFStringRef)[USER_DEFAULT objectForKey:@”ipAddress”], [[USER_DEFAULT objectForKey:@”port”] intValue], &amp;readStream, &amp;writeStream);<br>_inputStream = (</strong>bridge_transfer NSInputStream <em>)readStream;<br>_outputStream = (__bridge_transfer NSOutputStream</em>)writeStream;<br>[_inputStream setDelegate:self];<br>[_outputStream setDelegate:self];<br>[_inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];<br>[_outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];<br>[_inputStream open];<br>[_outputStream open];</p>
+</blockquote>
+<h3 id="NSStream代理方法"><a href="#NSStream代理方法" class="headerlink" title="NSStream代理方法"></a>NSStream代理方法</h3><blockquote>
+<p>-(void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent;</p>
+</blockquote>
+<h4 id="streamEvent连接状态说明"><a href="#streamEvent连接状态说明" class="headerlink" title="streamEvent连接状态说明"></a>streamEvent连接状态说明</h4><blockquote>
+<p>typedef NS_OPTIONS(NSUInteger, NSStreamEvent) {<br>    NSStreamEventNone = 0,//无状态<br>    NSStreamEventOpenCompleted = 1UL &lt;&lt; 0,//输入输出流打开成功<br>    NSStreamEventHasBytesAvailable = 1UL &lt;&lt; 1,//收到数据,有字节可读<br>    NSStreamEventHasSpaceAvailable = 1UL &lt;&lt; 2,//可以发送字节<br>    NSStreamEventErrorOccurred = 1UL &lt;&lt; 3,//连接出现错误<br>    NSStreamEventEndEncountered = 1UL &lt;&lt; 4//连接结束<br>};</p>
+</blockquote>
+<h4 id="有字节可读-收到数据处理-一般为16进制数据"><a href="#有字节可读-收到数据处理-一般为16进制数据" class="headerlink" title="有字节可读,收到数据处理(一般为16进制数据)"></a>有字节可读,收到数据处理(一般为16进制数据)</h4><blockquote>
+<pre><code>NSMutableData *input = [[NSMutableData alloc] init];
+uint8_t buffer[1024];  //①
+int len;
+while([_inputStream hasBytesAvailable]) //②
+{
+    len = [_inputStream read:buffer maxLength:sizeof(buffer)];  //③
+    if (len &gt; 0)
+    {
+        [input appendBytes:buffer length:len];
+    }
+}
+//将收到的流数据转换为字符串
+NSString *resultstring = @&quot;&quot;;
+Byte *bytes = (Byte *)[input bytes];
+for(int i=0;i&lt;[input length];i++)
+{
+    NSString *newHexStr = [NSString stringWithFormat:@&quot;%x&quot;,bytes[i]&amp;0xff]; ///16进制数
+    if([newHexStr length]==1)
+        resultstring = [NSString stringWithFormat:@&quot;%@0%@&quot;,resultstring,newHexStr];
+    else
+        resultstring = [NSString stringWithFormat:@&quot;%@%@&quot;,resultstring,newHexStr];
+}
+NSLog(@&quot;接收:%@&quot;,resultstring);
+</code></pre></blockquote>
+<h3 id="发送数据包到接收端"><a href="#发送数据包到接收端" class="headerlink" title="发送数据包到接收端"></a>发送数据包到接收端</h3><blockquote>
+<p>//将发送的字符串转换为data数据(需转为16进制字符串)<br>NSData *data = [NSData data];<br>[_outputStream write:[data bytes] maxLength:data.length];</p>
+</blockquote>
+<h3 id="断开连接"><a href="#断开连接" class="headerlink" title="断开连接"></a>断开连接</h3><blockquote>
+<p>[_outputStream close];<br>[_outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];<br>[_outputStream setDelegate:nil];<br>[_inputStream close];<br>[_inputStream removeFromRunLoop:[NSRunLoop currentRunLoop]forMode:NSDefaultRunLoopMode];<br>[_inputStream setDelegate:nil]; </p>
+</blockquote>
+<h2 id="普通字符串与16进制字符串互相转换"><a href="#普通字符串与16进制字符串互相转换" class="headerlink" title="普通字符串与16进制字符串互相转换"></a>普通字符串与16进制字符串互相转换</h2><h3 id="普通字符串转16进制字符串"><a href="#普通字符串转16进制字符串" class="headerlink" title="普通字符串转16进制字符串"></a>普通字符串转16进制字符串</h3><pre>
++ (NSString *)hexStringFromString:(NSString *)string{
+    NSData *myD = [string dataUsingEncoding:NSUTF8StringEncoding];
+    Byte *bytes = (Byte *)[myD bytes];
+    //下面是Byte 转换为16进制。
+    NSString *hexStr=@"";
+    for(int i=0;i < [myD length];i++)
+    {
+        NSString *newHexStr = [NSString stringWithFormat:@"%x",bytes[i]&0xff];///16进制数
 
+        if([newHexStr length]==1)
+
+            hexStr = [NSString stringWithFormat:@"%@0%@",hexStr,newHexStr];
+
+        else 
+
+            hexStr = [NSString stringWithFormat:@"%@%@",hexStr,newHexStr]; 
+    } 
+    return hexStr; 
+}
+</pre>
+
+<h3 id="16进制字符串转换为普通字符串"><a href="#16进制字符串转换为普通字符串" class="headerlink" title="16进制字符串转换为普通字符串"></a>16进制字符串转换为普通字符串</h3><pre>
++ (NSString *)stringFromHexString:(NSString *)hexString {
+    char *myBuffer = (char *)malloc((int)[hexString length] / 2 + 1);
+    bzero(myBuffer, [hexString length] / 2 + 1);
+    for (int i = 0; i < [hexString length] - 1; i += 2) {
+        unsigned int anInt;
+        NSString * hexCharStr = [hexString substringWithRange:NSMakeRange(i, 2)];
+        NSScanner * scanner = [[NSScanner alloc] initWithString:hexCharStr];
+        [scanner scanHexInt:&anInt];
+        myBuffer[i / 2] = (char)anInt;
+    }
+    NSString *unicodeString = [NSString stringWithCString:myBuffer encoding:4];
+    return unicodeString;
+}    
+</pre>
+
+<h3 id="NSString转换为NSData"><a href="#NSString转换为NSData" class="headerlink" title="NSString转换为NSData"></a>NSString转换为NSData</h3><pre><code>+ (NSData*) hexToBytesWIthStringxx:(NSString *)str {
+NSMutableData* data = [NSMutableData data];
+int idx;
+for (idx = 0; idx+2 &lt;= str.length; idx+=2) {
+    NSRange range = NSMakeRange(idx, 2);
+    NSScanner* scanner = [NSScanner scannerWithString:hexStr];
+    unsigned int intValue;
+    [scanner scanHexInt: &amp;intValue];
+    [data appendBytes: &amp;intValue length:1];
+}
+return data;
+}
+</code></pre>
       
     </div>
     
@@ -267,13 +362,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/10/08/loginAndShareManager/">第三方登陆分享功能封装(QQ 微信 新浪微博)</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/07/TCP-IP/">NSStream实现TCP Socket客户端,与硬件直接做交互</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 小峰 的个人博客">小峰</a></p>
-        <p><span>发布时间:</span>2016年10月08日 - 17时39分</p>
-        <p><span>最后更新:</span>2017年08月04日 - 16时06分</p>
+        <p><span>发布时间:</span>2017年08月07日 - 14时41分</p>
+        <p><span>最后更新:</span>2017年08月07日 - 17时34分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/10/08/loginAndShareManager/" title="第三方登陆分享功能封装(QQ 微信 新浪微博)">/2016/10/08/loginAndShareManager/</a>
-            <span class="copy-path" data-clipboard-text="原文: /2016/10/08/loginAndShareManager/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/07/TCP-IP/" title="NSStream实现TCP Socket客户端,与硬件直接做交互">/2017/08/07/TCP-IP/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2017/08/07/TCP-IP/　　作者: 小峰" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -286,18 +381,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/11/20/UIWebView-WKWebView/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          UIWebView与WKWebView封装适配ios7.0+
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/09/10/webSocket/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">webSocket使用记录</div>
+    <a href="/2017/06/04/playerPackaging/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">视频相关封装</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -308,7 +394,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#需求-第三方登陆分享不能使用第三方的框架-友盟-share等-所以自己将使用到的登陆分享做了一个封装-个人感觉调用起来比第三方还方便-下面上代码"><span class="toc-number">1.</span> <span class="toc-text">需求:第三方登陆分享不能使用第三方的框架(友盟,share等),所以自己将使用到的登陆分享做了一个封装,个人感觉调用起来比第三方还方便,下面上代码.</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最基础的配置看文档-不一一说明了-将loginAndShareManager导入工程-调用是导入LoginShareHeader-h即可"><span class="toc-number">1.1.</span> <span class="toc-text">最基础的配置看文档,不一一说明了,将loginAndShareManager导入工程,调用是导入LoginShareHeader.h即可.</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP连接三次握手"><span class="toc-number">1.</span> <span class="toc-text">TCP连接三次握手:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用Socket建立网络连接的步骤：服务器监听，客户端请求，连接确认"><span class="toc-number">2.</span> <span class="toc-text">利用Socket建立网络连接的步骤：服务器监听，客户端请求，连接确认</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSStream使用详解"><span class="toc-number"></span> <span class="toc-text">NSStream使用详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性设置-输入输出流"><span class="toc-number">1.</span> <span class="toc-text">属性设置,输入输出流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化输入输出流-建立连接"><span class="toc-number">2.</span> <span class="toc-text">初始化输入输出流,建立连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSStream代理方法"><span class="toc-number">3.</span> <span class="toc-text">NSStream代理方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#streamEvent连接状态说明"><span class="toc-number">3.1.</span> <span class="toc-text">streamEvent连接状态说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有字节可读-收到数据处理-一般为16进制数据"><span class="toc-number">3.2.</span> <span class="toc-text">有字节可读,收到数据处理(一般为16进制数据)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送数据包到接收端"><span class="toc-number">4.</span> <span class="toc-text">发送数据包到接收端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断开连接"><span class="toc-number">5.</span> <span class="toc-text">断开连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#普通字符串与16进制字符串互相转换"><span class="toc-number"></span> <span class="toc-text">普通字符串与16进制字符串互相转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#普通字符串转16进制字符串"><span class="toc-number">1.</span> <span class="toc-text">普通字符串转16进制字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16进制字符串转换为普通字符串"><span class="toc-number">2.</span> <span class="toc-text">16进制字符串转换为普通字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSString转换为NSData"><span class="toc-number">3.</span> <span class="toc-text">NSString转换为NSData</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -370,7 +456,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/10/08/loginAndShareManager/" data-title="第三方登陆分享功能封装(QQ 微信 新浪微博)" data-url="/2016/10/08/loginAndShareManager/"></div>
+    <div class="ds-thread" data-thread-key="2017/08/07/TCP-IP/" data-title="NSStream实现TCP Socket客户端,与硬件直接做交互" data-url="/2017/08/07/TCP-IP/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -393,13 +479,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/11/20/UIWebView-WKWebView/" title="上一篇: UIWebView与WKWebView封装适配ios7.0+">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/09/10/webSocket/" title="下一篇: webSocket使用记录">
+            <a href="/2017/06/04/playerPackaging/" title="下一篇: 视频相关封装">
                 <i class="fa fa-angle-right"></i>
             </a>
         
